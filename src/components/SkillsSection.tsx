@@ -1,5 +1,6 @@
 import { portfolioData, SkillGroup } from "@/data/portfolio";
 import { PythonIcon } from "@/components/icons/BrandIcons";
+import ScrollReveal from "@/components/ScrollReveal";
 import {
   Brain,
   Workflow,
@@ -70,7 +71,7 @@ export default function SkillsSection() {
     >
       <div className="max-w-[1440px] 2xl:max-w-[1680px] mx-auto pl-0 lg:pl-12">
         {/* Section Header */}
-        <div className="mb-12 sm:mb-16">
+        <ScrollReveal className="mb-12 sm:mb-16">
           <div className="flex items-center gap-2 text-sm text-zinc-900 font-medium mb-3">
             <span className="w-2 h-2 rounded-full bg-zinc-900 inline-block" />
             <span>Skills</span>
@@ -78,12 +79,12 @@ export default function SkillsSection() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-zinc-900">
             Skills &amp; Competencies
           </h2>
-        </div>
+        </ScrollReveal>
 
         {/* Skill Category Groups */}
         <div className="space-y-10 sm:space-y-12">
-          {skillGroups.map((group) => (
-            <div key={group.category}>
+          {skillGroups.map((group, groupIdx) => (
+            <ScrollReveal key={group.category} delay={groupIdx * 0.1}>
               {/* Category Eyebrow */}
               <h3 className="text-xs sm:text-[13px] font-semibold text-zinc-500 uppercase tracking-wider mb-4 sm:mb-5">
                 {group.category}
@@ -120,7 +121,7 @@ export default function SkillsSection() {
                   );
                 })}
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

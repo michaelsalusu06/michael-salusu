@@ -1,5 +1,6 @@
 import { portfolioData } from "@/data/portfolio";
 import { ArrowUpRight } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function ExperienceSection() {
   const { experience, experienceSection, experienceBanner } = portfolioData;
@@ -13,7 +14,7 @@ export default function ExperienceSection() {
         {/* Section Header */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start mb-12 sm:mb-20">
           {/* Left Column: Eyebrow + Heading */}
-          <div>
+          <ScrollReveal>
             <div className="flex items-center gap-2 text-sm text-zinc-900 font-medium mb-4">
               <span className="w-2 h-2 rounded-full bg-zinc-900 inline-block" />
               <span>{experienceSection?.eyebrow || "Experiences"}</span>
@@ -23,10 +24,10 @@ export default function ExperienceSection() {
               <br />
               {experienceSection?.headingLine2 || "Experiences"}
             </h2>
-          </div>
+          </ScrollReveal>
 
           {/* Right Column: Paragraph + Contact Me CTA */}
-          <div className="flex flex-col justify-between items-start pt-1 md:pt-2">
+          <ScrollReveal delay={0.1} className="flex flex-col justify-between items-start pt-1 md:pt-2">
             <p className="text-sm sm:text-base text-zinc-600 leading-relaxed font-normal max-w-lg">
               {experienceSection?.description ||
                 "Over the past year, I've built full-stack software applications, solved complex algorithmic challenges, and managed digital operations for university tech initiatives."}
@@ -40,92 +41,93 @@ export default function ExperienceSection() {
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* Experience Rows */}
         <div className="border-t border-zinc-200/90 divide-y divide-zinc-200/90 border-b border-zinc-200/90">
           {experience.map((item, idx) => (
-            <div
-              key={idx}
-              className="py-7 sm:py-10 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start lg:items-center"
-            >
-              {/* Left: Organization / Company & Location + Period */}
-              <div className="lg:col-span-4">
-                <h3 className="text-base sm:text-lg font-medium text-zinc-900 tracking-tight">
-                  {item.company}
-                </h3>
-                <p className="text-xs sm:text-sm text-zinc-500 mt-1 flex items-center gap-1.5 font-normal">
-                  <span className="text-zinc-400">•</span>
-                  <span>{item.period}</span>
-                </p>
-              </div>
+            <ScrollReveal key={idx} delay={idx * 0.1}>
+              <div className="py-7 sm:py-10 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start lg:items-center">
+                {/* Left: Organization / Company & Location + Period */}
+                <div className="lg:col-span-4">
+                  <h3 className="text-base sm:text-lg font-medium text-zinc-900 tracking-tight">
+                    {item.company}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-zinc-500 mt-1 flex items-center gap-1.5 font-normal">
+                    <span className="text-zinc-400">•</span>
+                    <span>{item.period}</span>
+                  </p>
+                </div>
 
-              {/* Center: Role & Summary */}
-              <div className="lg:col-span-4">
-                <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed font-normal max-w-xl lg:max-w-md">
-                  {item.summary}
-                </p>
-              </div>
+                {/* Center: Role & Summary */}
+                <div className="lg:col-span-4">
+                  <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed font-normal max-w-xl lg:max-w-md">
+                    {item.summary}
+                  </p>
+                </div>
 
-              {/* Right: Pill Tags */}
-              <div className="lg:col-span-4 flex lg:justify-end items-center gap-2 flex-wrap pt-1 lg:pt-0">
-                {item.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full px-3.5 sm:px-4 py-1.5 text-xs text-zinc-700 bg-zinc-200/75 hover:bg-black hover:text-white transition-all duration-200 font-normal whitespace-nowrap cursor-default"
-                  >
-                    {tag}
-                  </span>
-                ))}
+                {/* Right: Pill Tags */}
+                <div className="lg:col-span-4 flex lg:justify-end items-center gap-2 flex-wrap pt-1 lg:pt-0">
+                  {item.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full px-3.5 sm:px-4 py-1.5 text-xs text-zinc-700 bg-zinc-200/75 hover:bg-black hover:text-white transition-all duration-200 font-normal whitespace-nowrap cursor-default"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
 
         {/* Promo / Consultation CTA Banner */}
-        <div className="mt-8 sm:mt-12 relative rounded-2xl sm:rounded-3xl overflow-hidden bg-zinc-950 border border-zinc-800/80 shadow-xl">
-          {/* Background Image with Dark Vignette Overlay */}
-          <div
-            className="absolute inset-0 bg-cover bg-center opacity-45 mix-blend-luminosity scale-105 transition-transform duration-700 hover:scale-100"
-            style={{ backgroundImage: "url('/banner-bg.jpg')" }}
-            aria-hidden="true"
-          />
-          <div
-            className="absolute inset-0 bg-gradient-to-t from-black via-black/85 to-black/70"
-            aria-hidden="true"
-          />
+        <ScrollReveal delay={0.12}>
+          <div className="mt-8 sm:mt-12 relative rounded-2xl sm:rounded-3xl overflow-hidden bg-zinc-950 border border-zinc-800/80 shadow-xl">
+            {/* Background Image with Dark Vignette Overlay */}
+            <div
+              className="absolute inset-0 bg-cover bg-center opacity-45 mix-blend-luminosity scale-105 transition-transform duration-700 hover:scale-100"
+              style={{ backgroundImage: "url('/banner-bg.jpg')" }}
+              aria-hidden="true"
+            />
+            <div
+              className="absolute inset-0 bg-gradient-to-t from-black via-black/85 to-black/70"
+              aria-hidden="true"
+            />
 
-          {/* Centered Compact Content */}
-          <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-8 sm:py-10 md:py-12 max-w-2xl mx-auto">
-            {/* Tagline / Eyebrow */}
-            <span className="text-xs sm:text-sm text-zinc-400 font-normal tracking-wide mb-2">
-              {experienceBanner?.eyebrow || "(Let's Connect)"}
-            </span>
+            {/* Centered Compact Content */}
+            <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-8 sm:py-10 md:py-12 max-w-2xl mx-auto">
+              {/* Tagline / Eyebrow */}
+              <span className="text-xs sm:text-sm text-zinc-400 font-normal tracking-wide mb-2">
+                {experienceBanner?.eyebrow || "(Let's Connect)"}
+              </span>
 
-            {/* Headline */}
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-normal tracking-tight text-white leading-snug mb-2.5 max-w-xl">
-              {experienceBanner?.heading || "Explore My Organizational Experience Further"}
-            </h3>
+              {/* Headline */}
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-normal tracking-tight text-white leading-snug mb-2.5 max-w-xl">
+                {experienceBanner?.heading || "Explore My Organizational Experience Further"}
+              </h3>
 
-            {/* Description */}
-            <p className="text-xs sm:text-sm text-zinc-300 max-w-lg leading-relaxed mb-5 font-normal">
-              {experienceBanner?.description ||
-                "Dive into my full extracurricular timeline, from managing digital operations for HIMTI's flagship tech events to competitive programming training with Jollybee."}
-            </p>
+              {/* Description */}
+              <p className="text-xs sm:text-sm text-zinc-300 max-w-lg leading-relaxed mb-5 font-normal">
+                {experienceBanner?.description ||
+                  "Dive into my full extracurricular timeline, from managing digital operations for HIMTI's flagship tech events to competitive programming training with Jollybee."}
+              </p>
 
-            {/* CTA Button / Link (Opens in new tab) */}
-            <a
-              href={experienceBanner?.ctaLink || "https://www.linkedin.com/in/michael-joseph-salusu-574935321/"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-white hover:text-zinc-300 group border-b border-white pb-0.5 transition-all"
-            >
-              <span>{experienceBanner?.ctaText || "View LinkedIn Profile"}</span>
-              <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
+              {/* CTA Button / Link (Opens in new tab) */}
+              <a
+                href={experienceBanner?.ctaLink || "https://www.linkedin.com/in/michael-joseph-salusu-574935321/"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-white hover:text-zinc-300 group border-b border-white pb-0.5 transition-all"
+              >
+                <span>{experienceBanner?.ctaText || "View LinkedIn Profile"}</span>
+                <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import { portfolioData } from "@/data/portfolio";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function AboutSection() {
   const { aboutHeading, aboutParagraphs } = portfolioData;
@@ -10,25 +11,26 @@ export default function AboutSection() {
     >
       <div className="max-w-[1440px] 2xl:max-w-[1680px] mx-auto pl-0 lg:pl-12">
         <div className="max-w-4xl">
-          {/* Eyebrow Label above the heading */}
-          <span className="block text-sm font-normal text-zinc-500 mb-3 tracking-wide">
-            About Me
-          </span>
+          <ScrollReveal>
+            {/* Eyebrow Label above the heading */}
+            <span className="block text-sm font-normal text-zinc-500 mb-3 tracking-wide">
+              About Me
+            </span>
 
-          {/* Bolded Full Name Heading */}
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-normal tracking-tight leading-snug sm:leading-tight text-zinc-900 mb-6 sm:mb-8">
-            {aboutHeading}
-          </h2>
+            {/* Bolded Full Name Heading */}
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-normal tracking-tight leading-snug sm:leading-tight text-zinc-900 mb-6 sm:mb-8">
+              {aboutHeading}
+            </h2>
+          </ScrollReveal>
 
           {/* Description Paragraphs */}
           <div className="space-y-6">
             {aboutParagraphs.map((paragraph, idx) => (
-              <p
-                key={idx}
-                className="text-base sm:text-lg lg:text-xl font-normal leading-relaxed text-zinc-600"
-              >
-                {paragraph}
-              </p>
+              <ScrollReveal key={idx} delay={0.1 + idx * 0.1}>
+                <p className="text-base sm:text-lg lg:text-xl font-normal leading-relaxed text-zinc-600">
+                  {paragraph}
+                </p>
+              </ScrollReveal>
             ))}
           </div>
         </div>

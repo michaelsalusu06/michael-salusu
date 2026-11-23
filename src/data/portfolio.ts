@@ -71,7 +71,7 @@ export const portfolioData = {
   },
 
   heroStats: [
-    { number: "20", label: "Certificates" },
+    { number: "21", label: "Certificates" },
     { number: "9", label: "Technologies" },
   ],
 

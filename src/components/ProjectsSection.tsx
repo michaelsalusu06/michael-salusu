@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { portfolioData, Project } from "@/data/portfolio";
 import { ArrowUpRight, ArrowRight, X } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function ProjectsSection() {
   const { projects } = portfolioData;
@@ -33,49 +34,50 @@ export default function ProjectsSection() {
     >
       <div className="max-w-[1440px] 2xl:max-w-[1680px] mx-auto px-6 sm:px-10 lg:px-16">
         {/* Section Header: Just "Projects", no top pill */}
-        <div className="text-center mb-12 sm:mb-16">
+        <ScrollReveal className="text-center mb-12 sm:mb-16">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-zinc-900">
             Projects
           </h2>
-        </div>
+        </ScrollReveal>
 
         {/* 3-Column Minimalist 3D Still Life Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
           {displayProjects.map((project, idx) => (
-            <div
-              key={project.id || idx}
-              onClick={() => setSelectedProject(project)}
-              className="group block cursor-pointer"
-            >
-              {/* Image Frame */}
-              <div className="relative aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden bg-zinc-200 shadow-sm transition-all duration-500 group-hover:shadow-xl">
-                <img
-                  src={project.image || `/project-${idx + 1}.jpg`}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
+            <ScrollReveal key={project.id || idx} delay={idx * 0.12}>
+              <div
+                onClick={() => setSelectedProject(project)}
+                className="group block cursor-pointer"
+              >
+                {/* Image Frame */}
+                <div className="relative aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden bg-zinc-200 shadow-sm transition-all duration-500 group-hover:shadow-xl">
+                  <img
+                    src={project.image || `/project-${idx + 1}.jpg`}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
 
-                {/* Hover Overlay with circular arrow button */}
-                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6">
-                  {/* Circular Button */}
-                  <div className="w-14 h-14 rounded-full bg-black/85 backdrop-blur-md text-white flex items-center justify-center transform scale-90 group-hover:scale-100 transition-transform duration-300 shadow-xl">
-                    <ArrowUpRight className="w-6 h-6" />
+                  {/* Hover Overlay with circular arrow button */}
+                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6">
+                    {/* Circular Button */}
+                    <div className="w-14 h-14 rounded-full bg-black/85 backdrop-blur-md text-white flex items-center justify-center transform scale-90 group-hover:scale-100 transition-transform duration-300 shadow-xl">
+                      <ArrowUpRight className="w-6 h-6" />
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Card Footer Caption */}
-              <div className="mt-3.5 sm:mt-4 text-xs sm:text-sm">
-                <h3 className="text-zinc-900 font-medium tracking-tight group-hover:text-black transition-colors">
-                  {project.title}
-                </h3>
+                {/* Card Footer Caption */}
+                <div className="mt-3.5 sm:mt-4 text-xs sm:text-sm">
+                  <h3 className="text-zinc-900 font-medium tracking-tight group-hover:text-black transition-colors">
+                    {project.title}
+                  </h3>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
 
         {/* Bottom CTA: Check out More → View More */}
-        <div className="flex items-center justify-center gap-3 text-xs sm:text-sm">
+        <ScrollReveal delay={0.15} className="flex items-center justify-center gap-3 text-xs sm:text-sm">
           <span className="text-zinc-400 font-normal">Check out More</span>
           <ArrowRight className="w-4 h-4 text-zinc-600" />
           <a
@@ -86,7 +88,7 @@ export default function ProjectsSection() {
           >
             View More
           </a>
-        </div>
+        </ScrollReveal>
       </div>
 
       {/* Project Details Modal with Blurred Background */}
